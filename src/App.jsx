@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import './index.css';
 
 function App() {
-  const [noPosition, setNoPosition] = useState({ top: '0px', left: '130px' });
+  // Start the "No" button further away on the right side
+  const [noPosition, setNoPosition] = useState({ top: '10px', left: '220px' });
   const [accepted, setAccepted] = useState(false);
 
-  // Function to teleport the "No" button randomly when hovered/touched
+  // Function to teleport the "No" button randomly within a wide boundary when hovered
   const moveNoButton = () => {
-    const randomX = Math.floor(Math.random() * 220) - 110; 
-    const randomY = Math.floor(Math.random() * 160) - 80;  
+    const randomX = Math.floor(Math.random() * 260) - 130; 
+    const randomY = Math.floor(Math.random() * 120) - 60;  
     setNoPosition({
       top: `${randomY}px`,
-      left: `${randomX + 130}px`,
+      left: `${randomX + 180}px`,
     });
   };
 
@@ -28,7 +29,8 @@ function App() {
       <div className="container">
         {!accepted ? (
           <>
-            <h1 className="title">For My Love ❤️</h1>
+            {/* Personalized Title Here */}
+            <h1 className="title">For Nimmu ❤️</h1>
             <p className="question">Will you be mine forever?</p>
             <div className="buttons-wrapper">
               <button className="btn-yes" onClick={() => setAccepted(true)}>
@@ -47,7 +49,7 @@ function App() {
         ) : (
           <div className="success-screen">
             <h1>Yay! 🎉</h1>
-            <p>You've made me the happiest person in the world! I love you forever and always. ❤️</p>
+            <p>You've made me the happiest person in the world, Nimmu! I love you forever and always. ❤️</p>
           </div>
         )}
       </div>
