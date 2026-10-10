@@ -93,6 +93,24 @@ function App() {
     </div>
   );
 
+  // New component for floating kiss marks in Phase 4
+  const FloatingKisses = () => (
+    <div className="petals-bg">
+      {[...Array(12)].map((_, i) => (
+        <div 
+          key={`kiss-${i}`} 
+          className="floating-kiss" 
+          style={{ 
+            left: `${Math.random() * 100}%`, 
+            animationDelay: `${Math.random() * 5}s`,
+          }}
+        >
+          💋
+        </div>
+      ))}
+    </div>
+  );
+
   return (
     <div className="app-wrapper">
       
@@ -102,6 +120,9 @@ function App() {
       </audio>
 
       <FallingPetals />
+      
+      {/* Show floating kisses only on Phase 4 */}
+      {phase === 4 && <FloatingKisses />}
 
       {blasts.map(p => (
         <div key={p.id} className="blast-particle" style={{
@@ -183,15 +204,46 @@ function App() {
             </div>
             <br />
             <button className="base-btn btn-yes" onClick={(e) => handleYesClick(e, 4)}>
-              One Last Thing... 💫
+              There's More... 💫
             </button>
           </div>
         </div>
       )}
 
-      {/* PHASE 4: CINEMATIC TRIBUTE WITH IMAGE[cite: 2] */}
+      {/* PHASE 4: THE VIDEO & KISSING ANIMATION */}
       {phase === 4 && (
         <div key="phase-4" className="phase-container">
+          <div className="glass-card">
+            
+            {/* CSS Kissing Emojis */}
+            <div className="kissing-emojis">
+              <div className="emoji-left">🧑🏻</div>
+              <div className="emoji-heart">💖</div>
+              <div className="emoji-right">👩🏻</div>
+            </div>
+
+            <h1 className="anime-title" style={{ fontSize: '3rem', marginBottom: '25px' }}>Just For You</h1>
+            
+            {/* The 10 Second Video */}
+            <div className="video-frame">
+              {/* autoPlay, loop, and muted ensure it plays immediately without blocking */}
+              <video src="/video.mp4" autoPlay loop muted playsInline className="video-content" />
+            </div>
+
+            <p className="body-text" style={{ fontStyle: 'italic', marginBottom: '25px' }}>
+              Every single second with you feels like absolute magic.
+            </p>
+
+            <button className="base-btn btn-yes" onClick={(e) => handleYesClick(e, 5)}>
+              See The Finale ✨
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* PHASE 5: CINEMATIC TRIBUTE WITH IMAGE */}
+      {phase === 5 && (
+        <div key="phase-5" className="phase-container">
           <div className="glass-card phase-4-card">
             <div className="phase-4-content">
               

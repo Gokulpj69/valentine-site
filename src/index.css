@@ -300,3 +300,78 @@ body {
   max-width: 720px !important;
   padding: 45px 40px !important;
 }
+/* --- PHASE 4: VIDEO FRAME & KISSING ANIMATIONS --- */
+
+.video-frame {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 25px auto;
+  border-radius: 16px;
+  padding: 4px;
+  background: linear-gradient(135deg, var(--imperial-gold) 0%, var(--palace-red) 100%);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.7), 0 0 25px var(--gold-glow);
+  position: relative;
+}
+
+.video-content {
+  width: 100%;
+  border-radius: 12px;
+  border: 2px solid var(--night-plum);
+  display: block;
+}
+
+/* Leaning Kiss Animation */
+.kissing-emojis {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+}
+
+.emoji-left {
+  animation: leanRight 1.5s infinite alternate ease-in-out;
+}
+
+.emoji-right {
+  animation: leanLeft 1.5s infinite alternate ease-in-out;
+}
+
+.emoji-heart {
+  font-size: 2rem;
+  animation: heartPop 1.5s infinite alternate ease-in-out;
+  color: #ff4d6d;
+}
+
+@keyframes leanRight {
+  0% { transform: rotate(0deg) translateX(0); }
+  100% { transform: rotate(20deg) translateX(15px); }
+}
+
+@keyframes leanLeft {
+  0% { transform: rotate(0deg) translateX(0); }
+  100% { transform: rotate(-20deg) translateX(-15px); }
+}
+
+@keyframes heartPop {
+  0% { transform: scale(0.8) translateY(10px); opacity: 0.5; }
+  100% { transform: scale(1.3) translateY(-10px); opacity: 1; }
+}
+
+/* Floating Kiss Marks in Background */
+.floating-kiss {
+  position: absolute;
+  font-size: 2.5rem;
+  animation: floatUpKiss 6s linear infinite;
+  opacity: 0.4;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@keyframes floatUpKiss {
+  0% { transform: translateY(110vh) scale(0.5) rotate(-15deg); opacity: 0; }
+  20% { opacity: 0.6; }
+  80% { opacity: 0.6; }
+  100% { transform: translateY(-10vh) scale(1.5) rotate(15deg); opacity: 0; }
+}
