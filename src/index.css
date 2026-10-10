@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
 
 :root {
-  /* The New Romantic Palace Palette - Twilight Plum & Imperial Gold */
   --night-plum: #1a0b1c; 
   --twilight-berry: #331431; 
   --palace-red: #8b2635;
@@ -38,7 +37,6 @@ body {
   perspective: 1200px;
 }
 
-/* Detailed Cinematic Dissolve */
 .phase-container {
   position: absolute;
   width: 100%;
@@ -54,7 +52,6 @@ body {
   100% { opacity: 1; filter: blur(0px); transform: scale(1) translateY(0); }
 }
 
-/* Highly Detailed Romantic Card */
 .glass-card {
   text-align: center;
   background: linear-gradient(135deg, rgba(51, 20, 49, 0.75) 0%, rgba(26, 11, 28, 0.85) 100%);
@@ -98,7 +95,6 @@ body {
   text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
-/* Glowing Alchemy/Apothecary Badge */
 .gold-badge {
   position: relative;
   width: 85px;
@@ -121,7 +117,6 @@ body {
   100% { transform: scale(1); box-shadow: 0 0 20px var(--gold-glow); }
 }
 
-/* Button Wrapper */
 .btn-wrapper {
   display: flex;
   justify-content: center;
@@ -144,7 +139,6 @@ body {
   letter-spacing: 1px;
 }
 
-/* Imperial Gold Yes Button */
 .btn-yes {
   background: linear-gradient(135deg, var(--imperial-gold) 0%, #fbe6a2 100%);
   color: var(--night-plum);
@@ -165,7 +159,6 @@ body {
   animation: none;
 }
 
-/* Elusive No Button */
 .btn-no {
   background: rgba(51, 20, 49, 0.95);
   color: var(--text-light);
@@ -181,7 +174,6 @@ body {
   box-shadow: 0 0 20px rgba(232, 197, 102, 0.3);
 }
 
-/* INTERACTIVE CLICK BLAST PARTICLES */
 .blast-particle {
   position: fixed;
   pointer-events: none;
@@ -196,7 +188,6 @@ body {
   100% { opacity: 0; transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.5) rotate(var(--rot)); }
 }
 
-/* Floating Plum Blossom Petals Background */
 .petals-bg {
   position: fixed;
   top: 0;
@@ -239,7 +230,6 @@ body {
   line-height: 1.7;
 }
 
-/* --- CINEMATIC PHASE 4 --- */
 .phase-4-content {
   display: flex;
   flex-direction: column;
@@ -280,7 +270,6 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-/* --- IMPERIAL IMAGE FRAMES --- */
 .anime-image-container {
   width: 100%;
   max-width: 380px;

@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './index.css';
 
 function App() {
   const [phase, setPhase] = useState(1);
   const [blasts, setBlasts] = useState([]);
+  
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   
   const [noPosition, setNoPosition] = useState({ top: '10px', left: '160px' });
   const [yesButtonScale, setYesButtonScale] = useState(1);
@@ -45,6 +48,14 @@ function App() {
     createBlast(e, () => setPhase(nextPhase));
   };
 
+  const handleStartJourney = (e) => {
+    if (audioRef.current && !isPlaying) {
+      audioRef.current.play();
+      setIsPlaying(true);
+    }
+    handleYesClick(e, 2);
+  };
+
   const moveNoButton = (e) => {
     if (e && e.type === 'click') createBlast(e, null);
 
@@ -84,6 +95,12 @@ function App() {
 
   return (
     <div className="app-wrapper">
+      
+      {/* Invisible Background Audio Element */}
+      <audio ref={audioRef} loop>
+        <source src="/bg-music.mp3" type="audio/mpeg" />
+      </audio>
+
       <FallingPetals />
 
       {blasts.map(p => (
@@ -111,7 +128,7 @@ function App() {
               <br /><br />
               I built this little secret space just for you. Are you ready to step inside?
             </p>
-            <button className="base-btn btn-yes" onClick={(e) => handleYesClick(e, 2)}>
+            <button className="base-btn btn-yes" onClick={handleStartJourney}>
               Let's Go ✨
             </button>
           </div>
