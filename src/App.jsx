@@ -8,7 +8,7 @@ function App() {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   
-  const [noPosition, setNoPosition] = useState({ top: '10px', left: '160px' });
+  const [noPosition, setNoPosition] = useState({ top: '10px', left: '100px' });
   const [yesButtonScale, setYesButtonScale] = useState(1);
   const [noText, setNoText] = useState("No");
 
@@ -59,18 +59,19 @@ function App() {
   const moveNoButton = (e) => {
     if (e && e.type === 'click') createBlast(e, null);
 
+    // Shortened pixel radius to prevent the button from flying off mobile screens
     const directions = [
-      { top: '-70px', left: '-140px' },
-      { top: '75px', left: '170px' },
-      { top: '-60px', left: '160px' },
-      { top: '80px', left: '-150px' },
-      { top: '0px', left: '200px' },
-      { top: '0px', left: '-200px' }
+      { top: '-60px', left: '-80px' },
+      { top: '65px', left: '90px' },
+      { top: '-50px', left: '85px' },
+      { top: '70px', left: '-85px' },
+      { top: '0px', left: '100px' },
+      { top: '0px', left: '-100px' }
     ];
     
     const randomSpot = directions[Math.floor(Math.random() * directions.length)];
     setNoPosition(randomSpot);
-    setYesButtonScale((prev) => Math.min(prev + 0.15, 1.8)); 
+    setYesButtonScale((prev) => Math.min(prev + 0.15, 1.6)); 
     
     const currentPhraseIndex = noPhrases.indexOf(noText);
     const nextPhraseIndex = (currentPhraseIndex + 1) % noPhrases.length;
@@ -79,7 +80,7 @@ function App() {
 
   const FallingPetals = () => (
     <div className="petals-bg">
-      {[...Array(25)].map((_, i) => (
+      {[...Array(20)].map((_, i) => (
         <div 
           key={i} 
           className="petal-particle" 
@@ -93,10 +94,9 @@ function App() {
     </div>
   );
 
-  // New component for floating kiss marks in Phase 4
   const FloatingKisses = () => (
     <div className="petals-bg">
-      {[...Array(12)].map((_, i) => (
+      {[...Array(10)].map((_, i) => (
         <div 
           key={`kiss-${i}`} 
           className="floating-kiss" 
@@ -114,14 +114,12 @@ function App() {
   return (
     <div className="app-wrapper">
       
-      {/* Invisible Background Audio Element */}
       <audio ref={audioRef} loop>
         <source src="/bg-music.mp3" type="audio/mpeg" />
       </audio>
 
       <FallingPetals />
       
-      {/* Show floating kisses only on Phase 4 */}
       {phase === 4 && <FloatingKisses />}
 
       {blasts.map(p => (
@@ -139,7 +137,7 @@ function App() {
       {phase === 1 && (
         <div key="phase-1" className="phase-container">
           <div className="glass-card">
-            <div className="anime-image-container" style={{ maxWidth: '280px' }}>
+            <div className="anime-image-container">
               <img src="/maomao.jpg" alt="Maomao" className="anime-image" onError={(e) => e.target.style.display = 'none'} />
             </div>
             
@@ -161,11 +159,11 @@ function App() {
         <div key="phase-2" className="phase-container">
           <div className="glass-card">
             <div className="gold-badge">🧪</div>
-            <h1 className="anime-title" style={{ fontSize: '3.2rem' }}>Just One Question</h1>
+            <h1 className="anime-title">Just One Question</h1>
             <p className="body-text">
               I was going to ask an apothecary for a cure, but honestly? I'm completely addicted to you, and I really don't want an antidote. I just want you by my side.
               <br /><br />
-              <strong style={{ color: 'var(--imperial-gold)', fontSize: '1.3rem' }}>Will you be mine forever, Nimmu?</strong>
+              <strong style={{ color: 'var(--imperial-gold)' }}>Will you be mine forever, Nimmu?</strong>
             </p>
             
             <div className="btn-wrapper">
@@ -215,18 +213,15 @@ function App() {
         <div key="phase-4" className="phase-container">
           <div className="glass-card">
             
-            {/* CSS Kissing Emojis */}
             <div className="kissing-emojis">
               <div className="emoji-left">🧑🏻</div>
               <div className="emoji-heart">💖</div>
               <div className="emoji-right">👩🏻</div>
             </div>
 
-            <h1 className="anime-title" style={{ fontSize: '3rem', marginBottom: '25px' }}>Just For You</h1>
+            <h1 className="anime-title" style={{ marginBottom: '20px' }}>Just For You</h1>
             
-            {/* The 10 Second Video */}
             <div className="video-frame">
-              {/* autoPlay, loop, and muted ensure it plays immediately without blocking */}
               <video src="/video.mp4" autoPlay loop muted playsInline className="video-content" />
             </div>
 
@@ -244,23 +239,23 @@ function App() {
       {/* PHASE 5: CINEMATIC TRIBUTE WITH IMAGE */}
       {phase === 5 && (
         <div key="phase-5" className="phase-container">
-          <div className="glass-card phase-4-card">
+          <div className="glass-card">
             <div className="phase-4-content">
               
               <div className="anime-image-container">
                 <img src="/jinshi-maomao.jpg" alt="Jinshi and Maomao" className="anime-image" />
               </div>
 
-              <h1 className="tribute-title" style={{ fontSize: '4.5rem' }}>I Love You 3000</h1>
+              <h1 className="tribute-title">I Love You 3000</h1>
               <p className="tribute-subtitle">My favorite mystery & my perfect cure</p>
               
-              <div className="body-text" style={{ fontStyle: 'italic', borderTop: '1.5px solid rgba(232, 197, 102, 0.3)', paddingTop: '25px', textAlign: 'left' }}>
+              <div className="body-text" style={{ fontStyle: 'italic', borderTop: '1.5px solid rgba(232, 197, 102, 0.3)', paddingTop: '20px', textAlign: 'left' }}>
                 Honestly, Nimmu, I could spend a thousand lifetimes trying to figure you out, and I would love every single second of it. 
                 <br /><br />
                 You are the brightest part of my days, the reason I smile at my phone, and the only person I want holding my hand. Thank you for being my absolute favorite reality.
                 <br /><br />
                 <div style={{ textAlign: 'right' }}>
-                  <strong style={{ color: 'var(--imperial-gold)', fontSize: '1.4rem' }}>— Gokul P Jith</strong>
+                  <strong style={{ color: 'var(--imperial-gold)' }}>— Gokul P Jith</strong>
                 </div>
               </div>
             </div>
